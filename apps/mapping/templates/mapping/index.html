@@ -1,0 +1,168 @@
+{% extends "layout.html" %}
+
+{% block title %}Mapping{% endblock %}
+{% block javascripts %}
+
+
+<script type="text/javascript" charset="utf-8" src="/Media/javascripts/OpenLayers/OpenLayers.js">	</script>
+	 <script src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+     <style>
+.olPopup * {
+    margin: 0px;
+    padding:0px;
+    font-size: 12px; }
+</style>
+
+    <script type="text/javascript">
+    	var centreLon=30.00942;
+		var centreLat=-1.95520;
+	   var initialZoomLevel=5;
+	   OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+        OpenLayers.Util.onImageLoadErrorColor = "transparent";
+        var map, lyr;
+        function init(){
+           var map = new OpenLayers.Map( document.getElementById('map'),
+            {  maxResolution: 360/512,
+                
+				
+    			//maxExtent: new OpenLayers.Bounds(-190,-100,190,100),
+    			//restrictedExtent: new OpenLayers.Bounds(-180,-90,180,90), 
+                numZoomLevels: 20,
+                minZoomLevel: 0,
+                maxZoomLevel: 19,
+				
+
+				projection: new OpenLayers.Projection("EPSG:900913"),
+            	displayProjection: new OpenLayers.Projection("EPSG:4326"),
+				units: "m",            
+            controls: [
+                new OpenLayers.Control.Navigation(),
+                new OpenLayers.Control.PanZoomBar(),
+                new OpenLayers.Control.LayerSwitcher({'ascending':false,dataLayersDiv:'layers',activeColor:'#eff0ff','div':OpenLayers.Util.getElement('layers')}),
+                new OpenLayers.Control.Permalink(),
+                new OpenLayers.Control.ScaleLine(),
+                new OpenLayers.Control.Permalink('permalink'),
+                new OpenLayers.Control.MousePosition(),
+                new OpenLayers.Control.OverviewMap(),
+            ]
+			
+			   });
+			  
+
+              {% ifequal method 'wms' %}
+              lyr = new OpenLayers.Layer.WMS("{{ engine }}","/{{ method }}/{{ engine }}", {layers:'world',format:'image/png'} );
+              {% endifequal %}
+              
+              {% ifequal method 'tms' %}
+              lyr = new OpenLayers.Layer.TMS("{{ engine }}","/{{ method }}/{{ engine }}/", 
+              { serviceVersion: "1.0.0", layername: "world",  type: "png" });
+              {% endifequal %}
+                
+              {% ifequal method 'cache' %}
+              lyr = new OpenLayers.Layer.TileCache("{{ engine }}", "/{{ method }}/{{ engine }}/", 
+              "world", { type: "png", });
+              {% endifequal %}
+              
+           // var mapnik = new OpenLayers.Layer.TMS()
+
+              
+              lyr = new OpenLayers.Layer.WMS("World","/mapnik/?LAYERS=world&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&WIDTH=256&HEIGHT=256",
+               { 'type':'png', 'isBaseLayer': false});
+			  cys=new OpenLayers.Layer.OSM.CycleMap("CycleMap"),
+		      osm2=new OpenLayers.Layer.OSM.Osmarender("Osmarender"),
+		      osm=new OpenLayers.Layer.OSM.Mapnik("Open Street Maps")
+              OpenLayers.Feature.prototype.popupClass = OpenLayers.Popup.FramedCloud;
+					var ap_txt=new OpenLayers.Layer.Text('NC Airports',
+                                     { location: "/Media/x.txt" } );
+					//map.addLayer(ap_txt);
+
+              
+              
+            map.addLayers([osm,lyr,osm2,cys,ap_txt]);
+            //map.fractionalZoom = true;
+			//map.addControl(new OpenLayers.Control.LayerSwitcher());
+			map.setBaseLayer(map.layers[0]);
+			
+           lyr.setOpacity(0.5);
+		   if( ! map.getCenter() ){
+			latlon=new OpenLayers.LonLat(centreLon,centreLat).transform(new OpenLayers.Projection("EPSG:4326"),map.getProjectionObject());
+			map.setCenter(latlon, 8);
+			}    
+        }                
+    </script>
+{% endblock %}
+
+{% block content %}
+<Table width=100% >
+<tr>
+<td width=70% valign=top ><br/>
+<div class="map">
+	<div id="map" style="width:600px;height:500px;border:1px solid blue;"></div>
+
+	
+
+	
+	<div id="markers">{% for location in all_locations %}
+		<div code="{{ location.code }}" marker="{{ location.type.marker }}" lat="{{ location.latitude }}" lng="{{ location.longitude }}">
+			<strong>{{ location.name }}</strong>
+		</div>{% endfor %}
+	</div>
+</div>	
+
+</td>
+<td width=30%  valign=top >
+
+<div class="module" style="color:black;height:200px;" >
+	<h2>Layouts</h2>
+	<div id="layers" style="position:absolute;top:1px;left3px;padding-left:4px;">
+		</div>
+	
+</div>
+	
+
+<!-- End of layouts Start of Locations -->
+
+<div class="module">
+	<h2>Locations</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> </th>
+				<th scope="col">Name</th>
+				<th scope="col">#</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if location_types %}
+				{% for location_type in location_types %}
+					<tr class="depth-">
+						<td class="indent"><span><a href="/mapping" class="unknown"><input type=checkbox name="malaria" /></a></span></td>
+						<td>{{ location_type.plural }}</td>
+						<td>{{ location_type.locations.count }}</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+			<tr class="no-data">
+				<td colspan="3">
+					No locations Yet.
+					
+				</td>
+			</tr>
+			{% endif %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<!-- paginator groups -->
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+</td></tr></table>
+{% endblock %}
+
+
+
+

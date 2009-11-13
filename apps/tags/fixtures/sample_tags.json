@@ -1,0 +1,92 @@
+[
+    {
+        "pk": 1,
+        "model": "tags.tag",
+        "fields": {
+            "code": "AA",
+            "title": "Alpha",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 2,
+        "model": "tags.tag",
+        "fields": {
+            "code": "BB",
+            "title": "Bravo",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 3,
+        "model": "tags.tag",
+        "fields": {
+            "code": "CC",
+            "title": "Charlie",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 4,
+        "model": "tags.tag",
+        "fields": {
+            "code": "DD",
+            "title": "Delta",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 5,
+        "model": "tags.tag",
+        "fields": {
+            "code": "EE",
+            "title": "Echo",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 6,
+        "model": "tags.tag",
+        "fields": {
+            "code": "FF",
+            "title": "Foxtrot",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 7,
+        "model": "tags.tag",
+        "fields": {
+            "code": "GG",
+            "title": "Golf",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 8,
+        "model": "tags.tag",
+        "fields": {
+            "code": "HH",
+            "title": "Hotel",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 9,
+        "model": "tags.tag",
+        "fields": {
+            "code": "II",
+            "title": "Indigo",
+            "pattern": ""
+        }
+    },
+    {
+        "pk": 10,
+        "model": "tags.tag",
+        "fields": {
+            "code": "JJ",
+            "title": "Juliet",
+            "pattern": ""
+        }
+    }
+]

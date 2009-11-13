@@ -1,0 +1,11 @@
+[
+    {
+        "pk": 1,
+        "model": "locations.location",
+        "fields": {
+            "code": "1020",
+            "name": "Example Health Facility",
+            "type": 4
+        }
+    }
+]

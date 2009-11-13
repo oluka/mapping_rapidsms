@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/16x16/panel/emergency
+END
+amenity=police.png
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/16x16/panel/emergency/amenity=police.png
+END
+amenity=hospital.png
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/16x16/panel/emergency/amenity=hospital.png
+END
+amenity=fire_station.png
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/16x16/panel/emergency/amenity=fire_station.png
+END

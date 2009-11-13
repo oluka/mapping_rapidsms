@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/735/trunk/serverside/cascadenik/tests
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/364/trunk/serverside/cascadenik/tests/__init__.py
+END
+test.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/735/trunk/serverside/cascadenik/tests/test.py
+END

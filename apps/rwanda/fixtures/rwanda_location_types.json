@@ -1,0 +1,62 @@
+[
+    {
+        "pk": 1,
+        "model": "locations.locationtype",
+        "fields": {
+            "singular": "Province",
+            "plural": "Provinces",
+            "slug": "provinces",
+            "is_linkable": 0,
+            "parent": null,
+            "marker": "1"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "locations.locationtype",
+        "fields": {
+            "singular": "District",
+            "plural": "Districts",
+            "slug": "districts",
+            "is_linkable": 0,
+            "parent": 1,
+            "marker": "1"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "locations.locationtype",
+        "fields": {
+            "singular": "Hospital",
+            "plural": "Hospitals",
+            "slug": "hospitals",
+            "is_linkable": 0,
+            "parent": 2,
+            "marker": "2"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "locations.locationtype",
+        "fields": {
+            "singular": "Health Centre",
+            "plural": "Health Centres",
+            "slug": "health-centres",
+            "is_linkable": 0,
+            "parent": 3,
+            "marker": "3"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "locations.locationtype",
+        "fields": {
+            "singular": "Village",
+            "plural": "Villages",
+            "slug": "villages",
+            "is_linkable": 0,
+            "parent": 4,
+            "marker": "4"
+        }
+    }
+]

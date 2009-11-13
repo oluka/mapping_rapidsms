@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/768/trunk/serverside/cascadenik
+END
+example.mml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/126/trunk/serverside/cascadenik/example.mml
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/321/trunk/serverside/cascadenik/LICENSE.txt
+END
+cascadenik-compile.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/577/trunk/serverside/cascadenik/cascadenik-compile.py
+END
+AUTHORS.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/323/trunk/serverside/cascadenik/AUTHORS.txt
+END
+INSTALL.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/363/trunk/serverside/cascadenik/INSTALL.txt
+END
+ez_setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/324/trunk/serverside/cascadenik/ez_setup.py
+END
+CHANGELOG.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/323/trunk/serverside/cascadenik/CHANGELOG.txt
+END
+test.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/735/trunk/serverside/cascadenik/test.py
+END
+setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/363/trunk/serverside/cascadenik/setup.py
+END
+cascadenik-style.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/471/trunk/serverside/cascadenik/cascadenik-style.py
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/126/trunk/serverside/cascadenik/README.txt
+END
+MANIFEST.in
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/327/trunk/serverside/cascadenik/MANIFEST.in
+END
+example.mss
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/419/trunk/serverside/cascadenik/example.mss
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/126/trunk/serverside/cascadenik/Makefile
+END

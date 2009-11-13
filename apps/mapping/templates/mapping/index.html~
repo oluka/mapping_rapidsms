@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block title %}Mapping{% endblock %}
+
+
+{% block content %}
+<Table width=100% >
+<tr>
+<td width=70% valign=top ><br/>
+<div class="map">
+	<div id="map"></div>
+
+	<script src="http://maps.google.com/maps?file=api&key=" type="text/javascript"></script>
+	<script src="/static/javascripts/labeledmarker.yc.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			var gm = google.maps;
+			if(gm.BrowserIsCompatible()) {
+				var INITIAL_ZOOM = 7;
+
+				/* initialize the map with the full
+				 * map-type, zoom, and pan controls */
+				var map = new gm.Map2($("#map").get(0));
+				map.addControl(new gm.LargeMapControl());
+				map.addControl(new gm.MapTypeControl());
+				map.disableDoubleClickZoom();
+
+				/* when the document is unloaded, allow the gmap
+				 * to release it's resoures (especially for IE6) */
+				$(document.body).unload(function() {
+					google.maps.Unload();
+				});
+
+				/* we're adding a new location, so center
+				 * the map over... guatemala! (what?) */
+				var lat = 15.800;
+				var lon = -90.588;
+				var latlon = new gm.LatLng(lat, lon);
+				map.setCenter(latlon, INITIAL_ZOOM);
+
+				/* iterate each of the markers (ALL locations),
+				 * and add a sprite to the map for each one */
+				$("#markers div").each(function() {
+					var loc = $(this);
+					
+					var point = new GLatLng(
+						loc.attr("lat"),
+						loc.attr("lng"));
+					
+					/* the "marker" property contains an integer, identifying
+					 * which marker to use from the markers.png sprite. each
+					 * marker is 34 pixels high, which we can use to calcuate
+					 * the actual offset of each */
+					var icon = new GIcon(G_DEFAULT_ICON);
+					icon.sprite = {
+						"image": "/static/locations/images/markers.png",
+						"top": loc.attr("marker") * 34
+					};
+					
+					/* add the marker with an overlayed caption (the location
+					 * code) using Mike Purvis's LabeledMarker lib */
+					var marker = new LabeledMarker(
+						point, {
+							"labelText": loc.attr("code"),
+							"labelClass": "caption",
+							"icon": icon
+						}
+					);
+					
+					marker.bindInfoWindow(this);
+					map.addOverlay(marker);
+				});
+			}
+		});
+	</script>
+	
+	<div id="markers">{% for location in all_locations %}
+		<div code="{{ location.code }}" marker="{{ location.type.marker }}" lat="{{ location.latitude }}" lng="{{ location.longitude }}">
+			<strong>{{ location.name }}</strong>
+		</div>{% endfor %}
+	</div>
+</div>	
+
+</td>
+<td width=30%  valign=top >
+
+<div class="module">
+	<h2>Layouts</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> </th>
+				<th scope="col">Name</th>
+				<th scope="col">#</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="depth-">
+				<td class="indent"><span><a href="/mapping" class="unknown"><input type=checkbox name="malaria" /></a></span></td>
+				<td>Malaria</td>
+				<td>1032</td>
+			</tr>
+			<tr class="no-data">
+				<td colspan="3">
+					No Layouts Yet.
+					
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<!-- paginator groups -->
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+<!-- End of layouts Start of Locations -->
+
+<div class="module">
+	<h2>Locations</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> </th>
+				<th scope="col">Name</th>
+				<th scope="col">#</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if location_types %}
+				{% for location_type in location_types %}
+					<tr class="depth-">
+						<td class="indent"><span><a href="/mapping" class="unknown"><input type=checkbox name="malaria" /></a></span></td>
+						<td>{{ location_type.plural }}</td>
+						<td>{{ location_type.locations.count }}</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+			<tr class="no-data">
+				<td colspan="3">
+					No locations Yet.
+					
+				</td>
+			</tr>
+			{% endif %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<!-- paginator groups -->
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+</td></tr></table>
+{% endblock %}
+
+
+
+

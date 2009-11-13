@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>map</title>
+  <script src="http://openlayers.org/api/OpenLayers.js"></script></script>
+<script type="text/javascript">
+
+       function setHTML(response) {
+				document.getElementById('nodeList').innerHTML = response.responseText;
+				}
+			
+			function init(){
+			    var lat = 38.890000;
+				var lon = -77.020000;
+				var zoom = 3;
+				var options = {
+				   
+					minResolution: "auto",
+					minExtent: new OpenLayers.Bounds(-1, -1, 1, 1),
+					maxResolution: "auto",
+					maxExtent: new OpenLayers.Bounds(-180, -90, 180, 90),
+					
+<!-- shows the controls to be displayed -->
+					    controls: [
+						new OpenLayers.Control.LayerSwitcher(
+						{'div':OpenLayers.Util.getElement('mapSwitcher')},
+						{ 'ascending':false},
+						{'roundedCornerr':true}
+						), 
+						new OpenLayers.Control.MousePosition(),
+						new OpenLayers.Control.PanZoom(),
+						new OpenLayers.Control.ScaleLine()
+						]
+
+
+				};
+				var map = new OpenLayers.Map('map', options );
+				
+<!--contains all the layers to be displayed plus the overlays-->			
+<!--will need url for the base layer and the format -->
+             <!--default layer called the base layer image from nasa-->
+			 
+		        var NASAwms = new OpenLayers.Layer.WMS( "NASA WMS",
+					"/mapnik_wms?", {layers: 'BMNG',
+						format: 'image/png'},
+					{isBaseLayer: true});
+					
+<!-- shows all the different overlays which have to be set to transparent true -->		
+          		<!-- image from usgs for washington-->	
+				
+			    var USGSwms = new OpenLayers.Layer.WMS ("USGS WMS",
+					"http://toposervices.cr.usgs.gov/wmsconnector/com.esri.wms.Esrimap/USGS_EDNA_geo?",
+					{layers: 'States_Generalized', format: 'image/png' , transparent: true},
+					{isBaseLayer:false}); 
+					
+			<!-- mark texts-->
+	        /*  var textlayer = new OpenLayers.Layer.Text( "text", { location:"textlayer.txt"} );*/
+	        
+	            var Malaria=new OpenLayers.Layer.WMS("Malaria",
+	            "http://toposervices.cr.usgs.gov/wmsconnector/com.esri.wms.Esrimap/USGS_EDNA_geo?",
+					{layers: 'States_Generalized', format: 'image/png' , transparent: true},{isBaseLayer:false});
+			
+                 USGSwms.setVisibility(false);
+                 
+				 map.addLayer(NASAwms);
+				 map.addLayer(USGSwms);
+				 map.addLayer(Malaria);
+			    <!-- map.addLayer(textlayer);-->
+                <!--    map.zoomToMaxExtent(); -->
+			map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+			
+			    <!--textlayer showing marked layers -->
+	}
+
+		</script>
+		
+		<style type="text/css">
+			#map {
+				width: 500px;
+				height: 500px;
+				border: 1px solid black;
+				}
+		</style>
+	</head>
+<body onload="init()">
+ 
+	<div id="map"></div>
+	<div id="nodeList"></div>
+	<div class="mapSwitcher" id="mapSwitcher"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* Name and/or Title
+ * vim:set noet:
+ * --
+ * Two or three lines of purpose and/or
+ * justification for the existence of this */
+
+
+/* shrink the rapidsms logo enough to hide the cellphone,
+ * since we're going to replace it with javascript */
+#branding h1 a {
+	width: 210px;
+}
+
+#branding span.signal {
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	display: block;
+	margin-left: 3px;
+	width: 32px;
+	height: 65px;
+	float: left;
+}
+
+
+/* set the cellphone icon for each signal strength */
+#branding span.signal.s-unknown { background-image: url("../images/rapidsms-cellphone-unknown.png"); }
+#branding span.signal.s-0 { background-image: url("../images/rapidsms-cellphone-0.png"); }
+#branding span.signal.s-1 { background-image: url("../images/rapidsms-cellphone-1.png"); }
+#branding span.signal.s-2 { background-image: url("../images/rapidsms-cellphone-2.png"); }
+#branding span.signal.s-3 { background-image: url("../images/rapidsms-cellphone-3.png"); }
+#branding span.signal.s-4 { background-image: url("../images/rapidsms-cellphone-4.png"); }
+
+
+/* each icon (one for each backend) contains
+ * a hidden ul containing the properties for
+ * each backend (signal strength, etc) */
+#branding span.signal ul {
+	position: absolute;
+	display: none;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+
+	/* occupy the space in the dark blue
+	 * strip at the top of the header */
+	font-weight: normal;
+	line-height: 22px;
+	font-size: 8pt;
+}
+
+	#branding span.signal li {
+		list-style: none;
+		float: left;
+		margin: 0;
+		padding: 0 1em;
+		border-right: 1px solid #11BAD0;
+		color: #CEF1F5;
+	}
+
+	#branding span.signal li.title {
+		font-weight: bold;
+		color: #fff;
+	}
+
+/* show the properties only when the backend's icon is
+ * hovered over. they're superfluous most of the time */
+#branding span.signal:hover ul {
+	display: block;
+}

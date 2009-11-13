@@ -1,0 +1,45 @@
+{% extends "tags/index.html" %}
+{% load pagination %}
+{% load reporters %}
+<!-- {% load region %}  -->
+
+{% block title %}{% if tag %}Edit {{ tag }}{% else %}Add a Tags{% endif %}{% endblock %}
+
+{% block content %}
+<div class="module">
+	<h2>{% if tag %}Edit {{ tag }}{% else %}Add a Tags{% endif %}</h2>
+	
+	<form method="post" id="fm-rep-add" action="/tags/{% if tag %}{{ tag.pk }}{% else %}add{% endif %}">
+		<div>
+			<label for="fm-rep-add-title">Title</label>
+			<input type="text" class="required" id="fm-rep-add-title" name="title"{% if tag %} value="{{ tag.title }}"{% endif %} />
+			<p class="help">Must be alphanumeric, up to 20 characters.</p>
+		</div>
+		<div>
+			<label>Code</label>
+			<div>
+				<input type="text" id="fm-rep-add-code" name="code"{% if tag %} value="{{ tag.code }}"{% endif %} />
+			<p class="help">Must be alphanumeric, up to 20 characters.</p>
+			</div>
+			<label>Pattern</label>
+			<div>
+				<textArea type="text" id="fm-rep-add-pattern" name="pattern"{% if tag %}> {{ tag.pattern}}{% endif %} </textArea>
+				<p class="help">A regular expression to match in the message</p>
+			</div>
+		</div>
+		
+		<div class="submit">
+			<input type="submit" value="{% if tag %}Save Changes{% else %}Add Tags{% endif %}" />{% if tag %}
+			<input type="submit" name="delete" value="Delete {{ tag }}" />{% endif %}
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		
+		/* validate the form on submit */
+		$("#fm-rep-add").rs_validate();
+	});
+</script>
+{% endblock %}

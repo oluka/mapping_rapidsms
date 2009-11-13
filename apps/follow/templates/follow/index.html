@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% load reporters %}
+{% load pagination %}
+{% block title %}Follow{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="/static/tags/javascripts/clear-form-elements.js"></script>
+<script type="text/javascript" src="/static/tags/javascripts/cloneable.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="/static/tags/stylesheets/tags.css" />
+{% endblock %}
+
+{% block content %}
+<div class="module">
+	<h2>All Follow</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col" colspan=2 align=center > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Followers</th>
+				<th scope="col"></th>
+				<th scope="col"></th>
+			</tr>
+			<tr>
+				<th scope="col">Reporter</th>
+				<th scope="col">Connection</th>
+				<th scope="col">Followed</th>
+				<th scope="col">Type</th>
+			</tr>
+		</thead>
+		<tbody>{% if followReporter.object_list %}
+		          {% for Reporter in followReporter.object_list %}
+		         <tr>
+				<td>{% if  Reporter.reporter  %}{{  Reporter.reporter }}{% else %}{% endif %}</td>
+				<td>{% if  Reporter.connection %}{{ Reporter.connection }}{% else %}{% endif %}</td>
+				<td><a href="" > {% if Reporter.following_object %}  {{ Reporter.following_object }}  {% else %} Unknown{% endif %}</a></td>
+				<td>  </td>
+			</tr>{% endfor %}{% endif %}
+			
+			{% if followLocation.object_list %}{% for Location in followLocation.object_list %}
+			<tr>			
+				<td>{% if Location.reporter  %}{{  Location.reporter }}{% else %}{% endif %}</td>
+				<td>{% if Location.connection %}{{Location.connection }}{% else %}{% endif %}</td>
+				<td><a href="" >  {% if Location.following_object %}  {{ Location.following_object }}  {% else %} Unknown{% endif %}</a></td>
+				<td> Location </td>
+			
+			</tr>{% endfor %}{% endif %}
+
+			{% if followGroup.object_list %}{% for Group in followGroup.object_list %}
+			<tr>
+				<td>{% if Group.reporter  %}{{  Group.reporter }}{% else %}{% endif %}</td>
+				<td>{% if Group.connection %}{{Group.connection }}{% else %}{% endif %}</td>
+				<td><a href="" >  {% if Group.following_object %}  {{ Group.following_object }}  {% else %} Unknown{% endif %}</a></td>
+				<td> Group </td>
+			
+			</tr>{% endfor %}{% endif %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+				{% if tags %}
+					{% paginator tags %}
+				{% endif %}
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	<div class="toolbar">
+		<a href="/tags/add" class="add">Add a Tag</a>
+	</div>
+</div>
+{% endblock %}
+
+

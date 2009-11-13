@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>map</title>
+ {% block js %}
+    <script type="text/javascript" charset="utf-8" src="http://openlayers.org/api/OpenLayers.js">	</script>
+	 <script src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+
+
+    <script type="text/javascript">
+    	var centreLon=30.00942;
+		var centreLat=-1.95520;
+	   var initialZoomLevel=5;
+	   OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+        OpenLayers.Util.onImageLoadErrorColor = "transparent";  
+        var map, lyr,drawControls;
+        function init(){
+			var myStyles = new OpenLayers.StyleMap({
+    			"default": new OpenLayers.Style({
+    			fillColor: "#ffcc66",
+    			strokeColor: "#ff9933",
+    			strokeWidth: 2
+    			})
+});
+
+          //Create a layer to put  points in
+			var point_layer = new OpenLayers.Layer.Vector(
+    					'Points', {styleMap: myStyles}
+										);
+   OpenLayers.Feature.prototype.popupClass = OpenLayers.Popup.FramedCloud;
+   var ap_txt=new OpenLayers.Layer.Text('NC Airports',
+                                     { location: 'airports.txt' } );
+   map.addLayer(ap_txt);
+								
+	function createPoint(lat,long)
+      {
+    //create  point with your values
+    return new OpenLayers.Layer.Vector(
+        new OpenLayers.Geometry.Point(
+            (lat,long)
+        )
+    );
+
+	}
+
+										
+		
+
+
+			
+			
+    
+                for (var i = 0; i < points.length; i++) {
+                    ext = points[i];
+                    pointss =createPoint(ext[0], ext[1]);
+                    
+                 
+                }
+				
+		   for(var key in drawControls) {
+                    map.addControl(drawControls[key]);
+                }
+                
+           var map = new OpenLayers.Map($('map'),
+            {   maxResolution: 360/512,
+                
+				
+    			//maxExtent: new OpenLayers.Bounds(-190,-100,190,100),
+    			//restrictedExtent: new OpenLayers.Bounds(-180,-90,180,90), 
+                numZoomLevels: 20,
+                minZoomLevel: 0,
+                maxZoomLevel: 19,
+				
+
+				projection: new OpenLayers.Projection("EPSG:900913"),
+            	displayProjection: new OpenLayers.Projection("EPSG:4326"),
+				units: "m",            
+            controls: [
+                new OpenLayers.Control.Navigation(),
+                new OpenLayers.Control.PanZoomBar(),
+                new OpenLayers.Control.LayerSwitcher({'ascending':false}),
+                new OpenLayers.Control.Permalink(),
+                new OpenLayers.Control.ScaleLine(),
+                new OpenLayers.Control.Permalink('permalink'),
+                new OpenLayers.Control.MousePosition(),
+                new OpenLayers.Control.OverviewMap(),
+            ]
+			
+			 
+
+				
+				 });
+
+              
+			  
+			  
+			
+             // var mapnik = new OpenLayers.Layer.TMS()
+
+              
+              lyr = new OpenLayers.Layer.WMS("World","/mapnik/?LAYERS=world&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&WIDTH=256&HEIGHT=256",
+               { 'type':'png', 'isBaseLayer': false});
+			  cys=new OpenLayers.Layer.OSM.CycleMap("CycleMap"),
+		      osm2=new OpenLayers.Layer.OSM.Osmarender("Osmarender"),
+		      osm=new OpenLayers.Layer.OSM.Mapnik("Open Street Maps")
+
+              
+              
+            map.addLayers([osm,lyr,osm2,cys]);
+            //map.fractionalZoom = true;
+			//map.addControl(new OpenLayers.Control.LayerSwitcher());
+			map.setBaseLayer(map.layers[1]);
+			
+           lyr.setOpacity(0.5);
+		   if( ! map.getCenter() ){
+			latlon=new OpenLayers.LonLat(centreLon,centreLat).transform(new OpenLayers.Projection("EPSG:4326"));// map.getProjectionObject());
+			map.setCenter(latlon, 8);
+			}
+               
+               
+        }                
+    </script>
+    {% endblock %}
+    
+  </head>
+  <body onload="init()">
+  {% block content %}
+    
+    
+    {% endblock %}
+    </h4>
+    <div id="map">
+    </div>
+    
+    
+	
+
+		
+		<style type="text/css">
+			#map {
+				width: 500px;
+				height: 500px;
+				border: 1px solid black;
+				}
+		</style>
+	
+
+</html>

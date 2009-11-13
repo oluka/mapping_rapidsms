@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs" bgcolor="rgba(0,0,0,0)">
+    <Style name="table__public___RWA_boundaries___the_geom__sql_20091111005933963_style">
+        <Rule>
+            <LineSymbolizer>
+                <CssParameter name="stroke">rgb(0,85,255)</CssParameter>
+                <CssParameter name="stroke-width">0.96</CssParameter>
+                <CssParameter name="stroke-linejoin">bevel</CssParameter>
+                <CssParameter name="stroke-linecap">square</CssParameter>
+            </LineSymbolizer>
+        </Rule>
+    </Style>
+    <Layer name="table__public___RWA_boundaries___the_geom__sql_20091111005933963" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs" status="1" clear_label_cache="0" queryable="1">
+        <StyleName>table__public___RWA_boundaries___the_geom__sql_20091111005933963_style</StyleName>
+        <Datasource>
+            <Parameter name="dbname">gis</Parameter>
+            <Parameter name="estimate_extent">0</Parameter>
+            <Parameter name="extent">28.8567886353,-2.84068012238,30.8959617615,-1.04481995106</Parameter>
+            <Parameter name="geometry_field">the_geom</Parameter>
+            <Parameter name="host">localhost</Parameter>
+            <Parameter name="port">5432</Parameter>
+            <Parameter name="table">roads</Parameter>
+            <Parameter name="type">postgis</Parameter>
+            <Parameter name="user">rapidsms_user</Parameter>
+        </Datasource>
+    </Layer>
+</Map>

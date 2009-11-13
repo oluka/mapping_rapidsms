@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block title %}Mapping{% endblock %}
+{% block javascripts %}
+<script src="http://openlayers.org/api/OpenLayers.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://openlayers.org/api/OpenLayers.js">	</script>
+    <script type="text/javascript">
+        var map, lyr;
+        function init(){
+           var map = new OpenLayers.Map( document.getElementById('map'),
+            {   maxResolution: 360/512,
+                projection: "EPSG:4326" ,
+				
+                numZoomLevels: 20,
+                minZoomLevel: 0,
+                maxZoomLevel: 19  });
+
+              {% ifequal method 'wms' %}
+              lyr = new OpenLayers.Layer.WMS("{{ engine }}","/{{ method }}/{{ engine }}", {layers:'world',format:'image/png'} );
+              {% endifequal %}
+              
+              {% ifequal method 'tms' %}
+              lyr = new OpenLayers.Layer.TMS("{{ engine }}","/{{ method }}/{{ engine }}/", 
+              { serviceVersion: "1.0.0", layername: "world",  type: "png" });
+              {% endifequal %}
+                
+              {% ifequal method 'cache' %}
+              lyr = new OpenLayers.Layer.TileCache("{{ engine }}", "/{{ method }}/{{ engine }}/", 
+              "world", { type: "png", });
+              {% endifequal %}
+              
+            map.addLayers([lyr]);
+            //map.fractionalZoom = true;
+            map.zoomToMaxExtent();     
+        }                
+    </script>
+{% endblock %}
+
+{% block content %}
+<Table width=100% >
+<tr>
+<td width=70% valign=top ><br/>
+<div class="map">
+	<div id="map" style="width:600px;height:500px;border:1px solid blue;"></div>
+
+	
+
+	
+	<div id="markers">{% for location in all_locations %}
+		<div code="{{ location.code }}" marker="{{ location.type.marker }}" lat="{{ location.latitude }}" lng="{{ location.longitude }}">
+			<strong>{{ location.name }}</strong>
+		</div>{% endfor %}
+	</div>
+</div>	
+
+</td>
+<td width=30%  valign=top >
+
+<div class="module">
+	<h2>Layouts</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> </th>
+				<th scope="col">Name</th>
+				<th scope="col">#</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="depth-">
+				<td class="indent"><span><a href="/mapping" class="unknown"><input type=checkbox name="malaria" /></a></span></td>
+				<td>Malaria</td>
+				<td>1032</td>
+			</tr>
+			<tr class="no-data">
+				<td colspan="3">
+					No Layouts Yet.
+					
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<!-- paginator groups -->
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+<!-- End of layouts Start of Locations -->
+
+<div class="module">
+	<h2>Locations</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col"> </th>
+				<th scope="col">Name</th>
+				<th scope="col">#</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if location_types %}
+				{% for location_type in location_types %}
+					<tr class="depth-">
+						<td class="indent"><span><a href="/mapping" class="unknown"><input type=checkbox name="malaria" /></a></span></td>
+						<td>{{ location_type.plural }}</td>
+						<td>{{ location_type.locations.count }}</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+			<tr class="no-data">
+				<td colspan="3">
+					No locations Yet.
+					
+				</td>
+			</tr>
+			{% endif %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<!-- paginator groups -->
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+</td></tr></table>
+{% endblock %}
+
+
+
+

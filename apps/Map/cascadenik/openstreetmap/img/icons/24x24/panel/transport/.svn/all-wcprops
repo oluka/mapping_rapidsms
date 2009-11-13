@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/24x24/panel/transport
+END
+highway=bus_stop.png
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/24x24/panel/transport/highway=bus_stop.png
+END
+amenity=parking.png
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/24x24/panel/transport/amenity=parking.png
+END
+amenity=airport.png
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/24x24/panel/transport/amenity=airport.png
+END
+railway=station.png
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/24x24/panel/transport/railway=station.png
+END
+amenity=taxi.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/226/trunk/serverside/cascadenik/openstreetmap/img/icons/24x24/panel/transport/amenity=taxi.png
+END

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% load reporters %}
+{% load pagination %}
+{% block title %}Tags and Groups{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="/static/tags/javascripts/clear-form-elements.js"></script>
+<script type="text/javascript" src="/static/tags/javascripts/cloneable.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="/static/tags/stylesheets/tags.css" />
+{% endblock %}
+
+{% block content %}
+<div class="module">
+	<h2>All Tags</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Code</th>
+				<th scope="col">Pattern</th>
+			</tr>
+		</thead>
+		<tbody>{% if tags.object_list %}{% for tag in tags.object_list %}
+			<tr>
+			
+				<td><a href="/tags/{{ tag.pk }}"{% if tag.title %}>{{ tag.title }}{% else %} class="unknown">Unknown{% endif %}</a></td>
+				<td>{% if tag.code %}{{ tag.code }}{% else %}<span class="na">n/a</span>{% endif %}</td>
+				<td>{% if tag.pattern %}{{ tag.pattern }}{% else %}<span class="na">n/a</span>{% endif %}</td>
+				
+			</tr>{% endfor %}{% else %}
+			<tr class="no-data">
+				<td colspan="3">
+					No tags Yet.
+					<a href="/tags/add" class="add">
+						Add a Tag
+					</a>
+				</td>
+			</tr>{% endif %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+				{% if tags %}
+					{% paginator tags %}
+				{% endif %}
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	<div class="toolbar">
+		<a href="/tags/add" class="add">Add a Tag</a>
+	</div>
+</div>
+{% endblock %}
+

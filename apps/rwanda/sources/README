@@ -1,0 +1,4 @@
+this data all came from RwandaHealthFaciltyDatabase.mdb, exported as CSV. the
+filenames are the same as the tables. we're manually syncronizing this stuff
+with scripts (see apps/rwanda/bin) for the time being, until voxia provide us
+with a delicious XML feed from their platform.

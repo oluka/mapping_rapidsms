@@ -1,3 +1,60 @@
-Except where otherwise specified, all of the files in this distribution are
-provided under version 3 or any subsequent version of the GNU Lesser General
-Public License.
+. Install rapidsms.  instructions at:
+	http://github.com/rapidsms/rapidsms-documentation/blob/c8368afba78d306a0eaaf0ae75ed7303d0e20d68/ubuntu_install.rst
+
+
+. Install tilecache 
+	http://tilecache.org/docs/README
+
+
+. Install apache and mod-python
+	http://www.briggs.net.nz/log/2007/04/20/mod_python-and-python25/
+
+
+. Install postgressql/postgis 
+	http://www.paolocorti.net/2008/01/30/installing-postgis-on-ubuntu/
+
+. Install the python adaptor to postgre
+	sudo apt-get install python-psycopg2
+
+. Install mapnik use these sites, make sure all the libaries are installed before you build.
+	http://trac.mapnik.org/wiki/UbuntuInstallation
+
+	http://www.kelvinism.com/howtos/setting-mapnik-server-ubuntu/
+
+	http://weait.com/content/build-your-own-openstreetmap-server
+
+
+. Get the latest code from: 
+	git clone git://github.com/oluka/rapidsms_mapping.git
+
+. Configure apache to run python.
+
+	1.sudo gedit /etc/apache2/httpd.conf
+	
+	edit it to look like:
+
+	MaxRequestsPerChild 1
+	<location "/">
+ 
+    		SetHandler python-program
+ 
+    		PythonHandler django.core.handlers.modpython
+ 
+    		SetEnv DJANGO_SETTINGS_MODULE osmrc_test_suite.settings
+ 
+    		PythonPath "['/home/ian/Web/django_projects'] + sys.path"
+
+    		PythonDebug On
+ 
+	</location>
+
+	<location "/admin_media">
+   		SetHandler None
+	</location>
+
+	<location "/media">
+   		SetHandler None
+	</location>
+
+
+   	SetHandler None

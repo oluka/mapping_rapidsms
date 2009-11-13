@@ -1,0 +1,266 @@
+[
+    {
+        "pk": 1,
+        "model": "tags.tag",
+        "fields": {
+            "code": "zi",
+            "title": "Mother with more than 3 previous childbirths"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ya",
+            "title": "Mother under 17 years of age"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "tags.tag",
+        "fields": {
+            "code": "fp",
+            "title": "False pregnancy confirmation"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "tags.tag",
+        "fields": {
+            "code": "bf",
+            "title": "Birth at health facility"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "tags.tag",
+        "fields": {
+            "code": "bh",
+            "title": "Birth at home"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "tags.tag",
+        "fields": {
+            "code": "da",
+            "title": "Premature birth"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "tags.tag",
+        "fields": {
+            "code": "bo",
+            "title": "Male"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ro",
+            "title": "Female"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ga",
+            "title": "Twins"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "tags.tag",
+        "fields": {
+            "code": "tu",
+            "title": "Triples"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "tags.tag",
+        "fields": {
+            "code": "kw",
+            "title": "Cord infection"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "tags.tag",
+        "fields": {
+            "code": "dy",
+            "title": "Sepsis (acute inflamation)"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "tags.tag",
+        "fields": {
+            "code": "rb",
+            "title": "Maternal death"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "tags.tag",
+        "fields": {
+            "code": "re",
+            "title": "Fetal death (miscarraige, stillborn, or abortion)"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "tags.tag",
+        "fields": {
+            "code": "rh",
+            "title": "Neonatal child death"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "tags.tag",
+        "fields": {
+            "code": "wi",
+            "title": "Has received antenatal care this trimester"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ut",
+            "title": "Has not received antenatal care this trimester"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "tags.tag",
+        "fields": {
+            "code": "mt",
+            "title": "Mother at term"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "tags.tag",
+        "fields": {
+            "code": "bi",
+            "title": "Mother in labor"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "tags.tag",
+        "fields": {
+            "code": "he",
+            "title": "Healthy"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ku",
+            "title": "Vomitting"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "tags.tag",
+        "fields": {
+            "code": "gu",
+            "title": "Diarrhea"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ma",
+            "title": "Malaria"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "tags.tag",
+        "fields": {
+            "code": "um",
+            "title": "Fever"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "tags.tag",
+        "fields": {
+            "code": "hy",
+            "title": "Hypothermia"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ba",
+            "title": "Rapid breathing"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "tags.tag",
+        "fields": {
+            "code": "na",
+            "title": "Breathing difficulties"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "tags.tag",
+        "fields": {
+            "code": "se",
+            "title": "Seizure or convulsions"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "tags.tag",
+        "fields": {
+            "code": "so",
+            "title": "Pneumonia"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "tags.tag",
+        "fields": {
+            "code": "am",
+            "title": "Hemorrhaging or bleeding"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "tags.tag",
+        "fields": {
+            "code": "an",
+            "title": "Anemic"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "tags.tag",
+        "fields": {
+            "code": "in",
+            "title": "Coughing"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "tags.tag",
+        "fields": {
+            "code": "ik",
+            "title": "Problem, cause unknown"
+        }
+    }
+]
